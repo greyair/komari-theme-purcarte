@@ -44,6 +44,7 @@ export interface ConfigOptions {
   isShowValueUnderProgressBar: boolean; // 是否在流量进度条下方显示数值
   selectTrafficProgressStyle: "circular" | "linear"; // 流量进度条样式
   enableListItemProgressBar: boolean; // 是否启用列表视图进度条
+  uptimeKumaApiUrl: string; // Uptime Kuma API URL
   customTexts: string; // 自定义UI文本
 }
 
@@ -95,6 +96,7 @@ export const DEFAULT_CONFIG: ConfigOptions = {
   isShowValueUnderProgressBar: false,
   selectTrafficProgressStyle: "linear",
   enableListItemProgressBar: true,
+  uptimeKumaApiUrl: "",
   customTexts: "",
 };
 // 定义颜色类型

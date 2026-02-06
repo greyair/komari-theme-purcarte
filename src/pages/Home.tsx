@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/useMobile";
 import { useLocale } from "@/config/hooks";
+import { UptimeKuma } from "@/components/sections/UptimeKuma";
 import { cn } from "@/utils";
 
 interface HomePageProps {
@@ -167,6 +168,8 @@ const HomePage: React.FC<HomePageProps> = ({
           </div>
         )}
       </div>
+
+      <UptimeKuma />
     </div>
   );
 };
