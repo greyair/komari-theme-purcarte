@@ -223,7 +223,7 @@ export const UptimeKuma = () => {
 
   const buildHistorySegments = (heartbeats: Heartbeat[], size = 24) => {
     if (heartbeats.length === 0) {
-      return Array.from({ length: size }, () => null);
+      return [];
     }
     const sorted = [...heartbeats].sort(
       (a, b) => new Date(a.time).getTime() - new Date(b.time).getTime()
@@ -231,9 +231,13 @@ export const UptimeKuma = () => {
     const chunkSize = Math.ceil(sorted.length / size);
     const startIndex = Math.max(0, sorted.length - chunkSize * size);
     const recent = sorted.slice(startIndex);
+    const lastHeartbeat = recent[recent.length - 1];
     return Array.from({ length: size }, (_, index) => {
       const chunk = recent.slice(index * chunkSize, (index + 1) * chunkSize);
-      return chunk.length ? chunk[chunk.length - 1] : null;
+      if (chunk.length) {
+        return chunk[chunk.length - 1];
+      }
+      return lastHeartbeat;
     });
   };
 
@@ -244,7 +248,7 @@ export const UptimeKuma = () => {
       </div>
       
       <ScrollArea className="w-full" showHorizontalScrollbar>
-        <div className="min-w-[1080px] px-2 pb-2">
+        <div className="w-full min-w-full px-2 pb-2">
           <div className="space-y-1">
             <Card className="theme-card-style text-primary font-bold grid grid-cols-12 text-center gap-4 p-2 items-center">
               <div className="col-span-2">名称</div>

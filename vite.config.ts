@@ -59,6 +59,13 @@ export default defineConfig(({ mode }) => {
           ws: true,
           secure: false,
         },
+        "/kuma": {
+          target:
+            env.VITE_UPTIME_KUMA_TARGET || "http://localhost:3000",
+          changeOrigin: true,
+          secure: true,
+          rewrite: (path) => path.replace(/^\/kuma/, ""),
+        },
       },
     },
   };

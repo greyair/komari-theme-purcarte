@@ -49,6 +49,10 @@ export interface ConfigOptions {
 }
 
 // 默认配置值
+const envUptimeKumaApiUrl =
+  (import.meta as { env?: { VITE_UPTIME_KUMA_API_URL?: string } })?.env
+    ?.VITE_UPTIME_KUMA_API_URL || "";
+
 export const DEFAULT_CONFIG: ConfigOptions = {
   isShowConfigEditButtonInLogined: true,
   mainWidth: 85,
@@ -96,7 +100,7 @@ export const DEFAULT_CONFIG: ConfigOptions = {
   isShowValueUnderProgressBar: false,
   selectTrafficProgressStyle: "linear",
   enableListItemProgressBar: true,
-  uptimeKumaApiUrl: "",
+  uptimeKumaApiUrl: envUptimeKumaApiUrl,
   customTexts: "",
 };
 // 定义颜色类型

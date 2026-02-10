@@ -171,6 +171,10 @@
   .theme-text-muted {
     @apply text-(--theme-text-muted-color);
   }
+
+  .rt-TooltipContent {
+    z-index: 50;
+  }
 }
 
 .striped-bg-red-translucent-diagonal {
