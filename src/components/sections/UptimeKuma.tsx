@@ -217,7 +217,11 @@ export const UptimeKuma = () => {
   };
 
   const formatTime = (timeStr: string) => {
-    const date = new Date(timeStr);
+    const hasTimeZone = /[zZ]|[+-]\d{2}:?\d{2}$/.test(timeStr);
+    const normalized = timeStr.includes("T")
+      ? timeStr
+      : timeStr.replace(" ", "T");
+    const date = new Date(hasTimeZone ? normalized : `${normalized}Z`);
     return date.toLocaleString();
   };
 
